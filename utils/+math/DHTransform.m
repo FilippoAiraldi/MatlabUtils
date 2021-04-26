@@ -29,7 +29,9 @@ function T = DHTransform(d, theta, a, alpha, type)
 
     if ~isvector(d) % then it must be a matrix
         assert(size(d, 4), "expected a 4-columns matrix.")
-        type = theta;
+        if isstring(theta) || ischar(theta)
+            type = theta;
+        end
         alpha = d(:, 4);
         a = d(:, 3);
         theta = d(:, 2);
