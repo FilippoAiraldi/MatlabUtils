@@ -13,7 +13,7 @@ classdef LinearRegressor
         % coefficient of determination for training data.
         R2 (1, 1) double
         % root mean squaread error for training data.
-        RMSE (1, 1) double 
+        rmse (1, 1) double 
     end
     
     methods
@@ -46,7 +46,7 @@ classdef LinearRegressor
             
             % compute fitting scores
             obj.R2 = math.rSquared(obj.y, obj.X * obj.theta);
-            obj.RMSE = math.RMSE(obj.y, obj.X * obj.theta);
+            obj.rmse = math.rmse(obj.y, obj.X * obj.theta);
         end
         
         function y = predict(mdl, X)
