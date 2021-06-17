@@ -12,6 +12,6 @@ function rmse = rmse(y_act, y_pred)
         y_pred (:, 1) double {mustBeVector, mustHaveSameNumRows(y_act, y_pred)}
     end
     
-    ss_tot = sum((y_act - y_pred).^2);
+    ss_tot = sum((y_act - y_pred).^2, 'omitnan');
     rmse = sqrt(ss_tot / length(y_act));
 end
