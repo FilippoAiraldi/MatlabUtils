@@ -11,7 +11,7 @@ function theta = recursiveLeastSquares(X, y, theta0, alpha)
     
     arguments
         X (:, :) double
-        y (:, 1) double {mustBeVector, mustHaveSameNumRows(X, y)}
+        y (:, 1) double {mustBeVector,  mustHaveSameDims(X, y, 1)}
         theta0 (:, 1) double {mustBeVector, mustMatMult(X, theta0)} = zeros(size(X, 2), 1)
         alpha (1, 1) double {mustBePositive} = 1
     end

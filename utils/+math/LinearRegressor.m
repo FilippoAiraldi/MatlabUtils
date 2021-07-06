@@ -26,7 +26,7 @@ classdef LinearRegressor
 
             arguments 
                 X (:, :) double
-                y (:, 1) double {mustBeVector, mustHaveSameNumRows(X, y)} 
+                y (:, 1) double {mustBeVector,  mustHaveSameDims(X, y, 1)} 
                 method string {mustBeText} = "inv"
             end
 

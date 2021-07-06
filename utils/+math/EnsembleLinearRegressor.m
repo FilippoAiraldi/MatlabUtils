@@ -30,8 +30,8 @@ classdef EnsembleLinearRegressor
             
             arguments 
                 X (:, :) double
-                y (:, 1) double {mustBeVector, mustHaveSameNumRows(X, y)} 
-                indexer (:, 1) uint8 {mustBeVector, mustBeNumeric, mustHaveSameNumRows(y, indexer), mustBeGreaterThanOrEqual(indexer, 1)}
+                y (:, 1) double {mustBeVector, mustHaveSameDims(X, y, 1)} 
+                indexer (:, 1) uint8 {mustBeVector, mustBeNumeric, mustHaveSameDims(y, indexer, 1), mustBeGreaterThanOrEqual(indexer, 1)}
                 method string {mustBeText} = "inv"
             end
             
@@ -75,7 +75,7 @@ classdef EnsembleLinearRegressor
             arguments
                 mdl (1, 1) {mustBeA(mdl, 'math.EnsembleLinearRegressor')}
                 X (:, :) double
-                indexer (:, 1) uint8 {mustBeVector, mustBeNumeric, mustHaveSameNumRows(X, indexer), mustBeGreaterThanOrEqual(indexer, 1)}
+                indexer (:, 1) uint8 {mustBeVector, mustBeNumeric, mustHaveSameDims(X, indexer, 1), mustBeGreaterThanOrEqual(indexer, 1)}
             end
             assert(length(mdl.regressors) >= max(indexer), 'invalid indexer; refers to an ensemble larger than the current.')
             

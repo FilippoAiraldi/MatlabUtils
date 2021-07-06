@@ -9,7 +9,7 @@ function rmse = rmse(y_act, y_pred)
     
     arguments 
         y_act (:, 1) double {mustBeVector}
-        y_pred (:, 1) double {mustBeVector, mustHaveSameNumRows(y_act, y_pred)}
+        y_pred (:, 1) double {mustBeVector, mustHaveSameDims(y_act, y_pred, 1)}
     end
     
     ss_tot = sum((y_act - y_pred).^2, 'omitnan');
