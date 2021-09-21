@@ -2,4 +2,5 @@
 lib/
 
 # others
-utils/+habilis/
+utils/+habilispp/
+[eE]xamples/

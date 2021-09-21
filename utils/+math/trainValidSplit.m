@@ -25,10 +25,4 @@ function [X_train, y_train, X_valid, y_valid] = trainValidSplit(X, y, valid_pc)
         y_train = y(train_idx, :);
         y_valid = y(valid_idx, :);
     end
-    
-%     N = length(items);
-%     k = floor(valid_pc * N);
-%     train_idx = randperm(N, N - k);
-%     train = items(train_idx);
-%     valid = setdiff(items, train);   
 end
