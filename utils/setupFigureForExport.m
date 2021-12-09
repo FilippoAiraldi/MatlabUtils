@@ -1,7 +1,7 @@
 function setupFigureForExport(fig)
     % SETUPFIGUREFOREXPORT Better looking figures for export.
     %
-    %   setupFigureForExport(fig) For the given figure or current figure, 
+    %   SETUPFIGUREFOREXPORT(fig) For the given figure or current figure, 
     %       moves legend location, removes grids and removes boxes around 
     %       axes and legends.
 	
@@ -20,6 +20,7 @@ function setupFigureForExport(fig)
     [hLegends.Box] = deal(switch_off{:});
 
     % switch axis box off and grid
+    switch_off = repmat({'off'}, 1, numel(numel(hAxes)));
     [hAxes.Box]   = deal(switch_off{:});
     [hAxes.XGrid] = deal(switch_off{:});
     [hAxes.YGrid] = deal(switch_off{:});

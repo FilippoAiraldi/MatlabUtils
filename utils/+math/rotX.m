@@ -1,7 +1,7 @@
 function M = rotX(a)
     % ROTX Rotation matrix around the x-axis.
     %
-    %   M = rotX(a) Returns the matrix describing a rotation around 
+    %   M = ROTX(a) Returns the matrix describing a rotation around 
     %       the x-axis of 'a' radians.
     
     arguments

@@ -1,7 +1,7 @@
 function theta = recursiveLeastSquares(X, y, theta0, alpha)
     % RECURSIVELEASTSQUARES Least-squares optimization in recursive form.
     %
-    %   theta = recursiveLeastSquares(X, y, theta0, alpha) Computes the
+    %   theta = RECURSIVELEASTSQUARES(X, y, theta0, alpha) Computes the
     %       optimal linear coefficients theta between X and y.
     %
     %   - X {matrix}: matrix of input features.

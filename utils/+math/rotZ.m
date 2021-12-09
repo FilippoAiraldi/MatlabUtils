@@ -1,7 +1,7 @@
 function M = rotZ(a)
-    % ROTZ Rotation matrix around the x-axis.
+    % ROTZ Rotation matrix around the z-axis.
     %
-    %   M = rotZ(a) Returns the matrix describing a rotation around 
+    %   M = ROTZ(a) Returns the matrix describing a rotation around 
     %       the z-axis of 'a' radians.
     
     arguments

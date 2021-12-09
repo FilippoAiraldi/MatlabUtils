@@ -1,7 +1,7 @@
 function r2 = rSquared(y_act, y_pred)
     % RSQUARED Coefficient of determination.
     %
-    %   rmse = rSquared(y_act, y_pred) Computes the coefficient of
+    %   rmse = RSQUARED(y_act, y_pred) Computes the coefficient of
     %       determination between y_act and y_pred.
     %
     %   - y_act {vector}: vector of actual values.

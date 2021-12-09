@@ -1,7 +1,7 @@
 function M = rotY(a)
-    % ROTY Rotation matrix around the x-axis.
+    % ROTY Rotation matrix around the y-axis.
     %
-    %   M = rotY(a) Returns the matrix describing a rotation around 
+    %   M = ROTY(a) Returns the matrix describing a rotation around 
     %       the y-axis of 'a' radians.
     
     arguments

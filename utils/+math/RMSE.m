@@ -1,7 +1,7 @@
-function rmse = rmse(y_act, y_pred)
+function rmse = RMSE(y_act, y_pred)
     % RMSE Root mean square error.
     %
-    %   e = rmse(y_act, y_pred) Computes the root mean square error
+    %   e = RMSE(y_act, y_pred) Computes the root mean square error
     %       between y_act and y_pred.
     %
     %   - y_act {vector}: vector of actual values.

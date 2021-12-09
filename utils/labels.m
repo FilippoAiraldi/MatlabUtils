@@ -1,7 +1,7 @@
 function labels(varargin)
-    % LABELS Array of zeros with same size.
+    % LABELS Plot labels
     %
-    % labels(xlbl, ylbl, zlbl) Adds x, y and even z labels to the axis of
+    % LABELS(xlbl, ylbl, zlbl) Adds x, y and even z labels to the axis of
     %   the current figure.
 	
     L = length(varargin);
