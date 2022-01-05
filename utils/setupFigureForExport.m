@@ -5,24 +5,32 @@ function setupFigureForExport(fig)
     %       moves legend location, removes grids and removes boxes around 
     %       axes and legends.
 	
-    if ~exist('NAME','var')
+    if ~exist('fig', 'var')
         fig = gcf();
     end
 
-    % get legends and axes
-    hLegends = findobj(fig, 'Type', 'Legend');
-    hAxes = findobj(fig, 'Type', 'Axes');
-
     % set legend location to northeastoutside and switch boxes off
-    locations = repmat({'northeastoutside'}, 1, numel(hLegends));
-    switch_off = repmat({'off'}, 1, numel(hLegends));
-    [hLegends.Location] = deal(locations{:});
-    [hLegends.Box] = deal(switch_off{:});
+    hLegends = findobj(fig, 'Type', 'Legend');
+    N = numel(hLegends);
+    if N > 0
+        locations = repmat({'northeastoutside'}, 1, N);
+        switch_off = repmat({'off'}, 1, N);
+        [hLegends.Location] = deal(locations{:});
+        [hLegends.Box] = deal(switch_off{:});
+    else
+        warning('no legend found.')
+    end
 
     % switch axis box off and grid
-    switch_off = repmat({'off'}, 1, numel(numel(hAxes)));
-    [hAxes.Box]   = deal(switch_off{:});
-    [hAxes.XGrid] = deal(switch_off{:});
-    [hAxes.YGrid] = deal(switch_off{:});
-    [hAxes.ZGrid] = deal(switch_off{:});
+    hAxes = findobj(fig, 'Type', 'Axes');
+    N = numel(hAxes);
+    if N > 0
+        switch_off = repmat({'off'}, 1, N);
+        [hAxes.Box]   = deal(switch_off{:});
+        [hAxes.XGrid] = deal(switch_off{:});
+        [hAxes.YGrid] = deal(switch_off{:});
+        [hAxes.ZGrid] = deal(switch_off{:});
+    else
+        warning('no axis found.')
+    end
 end
