@@ -1,8 +1,7 @@
 function when(func_name)
-    % This function is designed to check the date when the input function
-    % was introduced by MATLAB.
-    % The input variable can be either a string or a cell containing different
-    % strings. The information are gathered from web. Check the following examples:
+    % WHEN(func_name) Check the date when the given function was introduced
+    % by MATLAB. The input variable can be either a string or a cell 
+    % containing different strings. The information are gathered from web. 
     %
     % Example 1:
     % >> when('rand')
@@ -17,25 +16,27 @@ function when(func_name)
     % ## findstr is a built-in function (Introduced before R2006a)
     % ## weboptions is a Matlab function or an ordinary m-file (Introduced in R2014b)
     %
-    %
     % -------------------------------------------------
     % code by: Reza Ahmadzadeh (reza.ahmadzadeh@iit.it)
     % -------------------------------------------------
-    %
     
     if ischar(func_name)
         checkFunctionName(func_name);
     elseif iscell(func_name)
         for ii = 1:size(func_name,2)
-            fname = func_name{1,ii};
+            fname = func_name{1, ii};
             checkFunctionName(fname);
         end
     else
-        disp('Error! The input should be either a string or a cell-string.');
+        error('input ''%s'' should be either a string or a cell-string.', func_name);
     end
 end
 
 function checkFunctionName(fname)
+    if isa(fname, 'function_handle')
+        fname = func2str(fname);
+    end
+
     fname = lower(fname);
     A = exist(fname);
     switch A
@@ -61,24 +62,28 @@ function checkFunctionName(fname)
             w = ' is nonsense';
     end
 
-    url = ['https://mathworks.com/help/matlab/ref/' fname '.html'];
-    [str,status] = urlread(url);
-    if isempty(str)
-        url = ['https://mathworks.com/help/simulink/slref/' fname '.html'];
-        [str,status] = urlread(url);
-    end
-    if status == 0
-        disp(['Connection error or no online documentation found for [' fname ']. ' w '.']);
-        return;
-    end
-    idx = strfind(str,'release_introduced');
-    if isempty(idx)
-        str3 = 'No information found';
+    if A == 0
+        result = ['## [' fname ']' w '.'];
     else
-        str1 = str(1,idx+24:idx+47);
-        idx2 = strfind(str1,'R20');
-        str3 = str1(1,1:idx2+5);
+        url = ['https://mathworks.com/help/matlab/ref/' fname '.html'];
+        webdata = webread(url, 'ContentType', 'text');
+
+        if isempty(webdata)
+            result = ['## [' fname ']' w ' (No information found).'];
+        else
+            idx = strfind(webdata, 'Version History</h2></div>');
+            str = 'No information found';
+            for i = 1:length(idx)
+                terminal_idx = find(webdata(idx(i) + 34:end) == '<', 1);
+                if ~isempty(terminal_idx)
+                    str = webdata(idx(i) + 34:idx(i) + 32 + terminal_idx);
+                    break;
+                end
+            end
+
+            result = ['## [' fname ']' w ' (' str ').'];
+        end
     end
-    strr = ['## [' fname ']' w ' (' str3 ').'];
-    disp(strr);
+    
+    disp(result);
 end
