@@ -13,7 +13,7 @@ function setupFigureForExport(fig)
     hLegends = findobj(fig, 'Type', 'Legend');
     N = numel(hLegends);
     if N > 0
-        locations = repmat({'northeastoutside'}, 1, N);
+        locations = repmat({'best'}, 1, N);
         switch_off = repmat({'off'}, 1, N);
         [hLegends.Location] = deal(locations{:});
         [hLegends.Box] = deal(switch_off{:});
